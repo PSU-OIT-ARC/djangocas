@@ -170,12 +170,17 @@ class CASBackend(object):
             request.session['attributes'] = attributes
         if not username:
             return None
+
+        return self.get_or_init_user(username)
+
+    def get_or_init_user(self, username):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             # user will have an "unusable" password
             user = User.objects.create_user(username, '')
             user.save()
+
         return user
 
     def get_user(self, user_id):
