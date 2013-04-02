@@ -22,7 +22,7 @@ setup(
     keywords='django cas cas2 authentication middleware backend',
     license='MIT',
     long_description="""
-``django_cas2`` is a `CAS`_ 1.0 and CAS 2.0 authentication backend for
+``django_cas_pdx`` is a `CAS`_ 1.0 and CAS 2.0 authentication backend for
 `Django`_. It allows you to use Django's built-in authentication mechanisms
 and ``User`` model while adding support for CAS.
 
@@ -33,8 +33,8 @@ to the admin interface.
 .. _CAS: http://www.ja-sig.org/products/cas/
 .. _Django: http://www.djangoproject.com/
 """,
-    name='django_cas2',
-    packages=['django_cas2'],
+    name='django_cas_pdx',
+    packages=['django_cas_pdx'],
     url='https://github.com/mdj2/django-cas',
     version='1.0.0',
 )
