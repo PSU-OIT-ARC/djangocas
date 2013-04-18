@@ -6,7 +6,7 @@ import urllib2
 
 from django.conf import settings
 
-from django_cas_pdx.models import User
+from djangocas.models import User
 
 __all__ = ['CASBackend']
 
