@@ -72,13 +72,13 @@ administration interface) using CAS.
 At the moment, the best way to give a user access to the admin interface is
 by doing one of the following:
 
-    * Create the initial superuser account with a username that matches the
-      desired user. `djangocas` will be able to make use of the existing
-      user.
-    * Similarly, create database fixtures for the superusers, and load them
-      when deploying the application.
-    * Ask the user to sign in to the application and, as an admin, log into
-      the admin interface and change their access through the Users table.
+* Create the initial superuser account with a username that matches the
+  desired user. `djangocas` will be able to make use of the existing
+  user.
+* Similarly, create database fixtures for the superusers, and load them
+  when deploying the application.
+* Ask the user to sign in to the application and, as an admin, log into
+  the admin interface and change their access through the Users table.
 
 
 # Populating User Data
