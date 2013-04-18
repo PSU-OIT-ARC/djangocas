@@ -33,27 +33,27 @@ AUTHENTICATION_BACKENDS = (
 
 Set the following required setting in `settings.py`:
 
-    * `CAS_SERVER_URL`: This is the only setting you must explicitly define.
-      Set it to the base URL of your CAS source (e.g.
-      http://sso.some.edu/cas/).
+* `CAS_SERVER_URL`: This is the only setting you must explicitly define.
+  Set it to the base URL of your CAS source (e.g.
+  http://sso.some.edu/cas/).
 
 Optional settings include:
 
-    * `CAS_ADMIN_PREFIX`: The URL prefix of the Django administration site.
-      If undefined, the CAS middleware will check the view being rendered to
-      see if it lives in `django.contrib.admin.views`.
-    * `CAS_EXTRA_LOGIN_PARAMS`: Extra URL parameters to add to the login URL
-      when redirecting the user.
-    * `CAS_IGNORE_REFERER`: If `True`, logging out of the application will
-      always send the user to the URL specified by `CAS_REDIRECT_URL`.
-    * `CAS_LOGOUT_COMPLETELY`: If `False`, logging out of the application
-      won't log the user out of CAS as well.
-    * `CAS_REDIRECT_URL`: Where to send a user after logging in or out if
-      there is no referrer and no next page set. Default is `/`.
-    * `CAS_RETRY_LOGIN`: If `True` and an unknown or invalid ticket is
-      received, the user is redirected back to the login page.
-    * `CAS_VERSION`: The CAS protocol version to use. `'1'` and `'2'` are
-      supported, with `'2'` being the default.
+* `CAS_ADMIN_PREFIX`: The URL prefix of the Django administration site.
+  If undefined, the CAS middleware will check the view being rendered to
+  see if it lives in `django.contrib.admin.views`.
+* `CAS_EXTRA_LOGIN_PARAMS`: Extra URL parameters to add to the login URL
+  when redirecting the user.
+* `CAS_IGNORE_REFERER`: If `True`, logging out of the application will
+  always send the user to the URL specified by `CAS_REDIRECT_URL`.
+* `CAS_LOGOUT_COMPLETELY`: If `False`, logging out of the application
+  won't log the user out of CAS as well.
+* `CAS_REDIRECT_URL`: Where to send a user after logging in or out if
+  there is no referrer and no next page set. Default is `/`.
+* `CAS_RETRY_LOGIN`: If `True` and an unknown or invalid ticket is
+  received, the user is redirected back to the login page.
+* `CAS_VERSION`: The CAS protocol version to use. `'1'` and `'2'` are
+  supported, with `'2'` being the default.
 
 Make sure your project knows how to log users in and out by adding these to
 your URL mappings:
@@ -176,8 +176,8 @@ protocol, though the CAS 3.x server does allow extensions to the protocol.
 Version 2.0 of `djangocas` breaks compatibility in some small ways, in order
 simplify the library. The following settings have been removed:
 
-    * `CAS_LOGIN_URL` and `CAS_LOGOUT_URL`: Version 2.0 is capable of
-      determining these automatically.
-    * `CAS_POPULATE_USER`: Subclass `CASBackend` instead (see above).
-    * `CAS_REDIRECT_FIELD_NAME`: Django's own `REDIRECT_FIELD_NAME` is now
-      used unconditionally.
+* `CAS_LOGIN_URL` and `CAS_LOGOUT_URL`: Version 2.0 is capable of
+  determining these automatically.
+* `CAS_POPULATE_USER`: Subclass `CASBackend` instead (see above).
+* `CAS_REDIRECT_FIELD_NAME`: Django's own `REDIRECT_FIELD_NAME` is now
+  used unconditionally.
