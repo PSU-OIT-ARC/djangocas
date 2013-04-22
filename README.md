@@ -1,5 +1,7 @@
 # Django CAS
 
+Based on [django-cas](https://bitbucket.org/cpcc/django-cas).
+
 `djangocas` is a CAS 1.0 and CAS 2.0 authentication backend for Django. It
 allows you to use Django's built-in authentication mechanisms and `User` model
 while adding support for CAS.
