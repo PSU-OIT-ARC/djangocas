@@ -171,15 +171,3 @@ Python 2.5's standard library.)
 
 Note: The CAS 3.x server uses the CAS 2.0 protocol. There is no CAS 3.0
 protocol, though the CAS 3.x server does allow extensions to the protocol.
-
-
-# Differences Between Django CAS 1.0 and 2.0 
-
-Version 2.0 of `djangocas` breaks compatibility in some small ways, in order
-simplify the library. The following settings have been removed:
-
-* `CAS_LOGIN_URL` and `CAS_LOGOUT_URL`: Version 2.0 is capable of
-  determining these automatically.
-* `CAS_POPULATE_USER`: Subclass `CASBackend` instead (see above).
-* `CAS_REDIRECT_FIELD_NAME`: Django's own `REDIRECT_FIELD_NAME` is now
-  used unconditionally.
