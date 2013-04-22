@@ -5,7 +5,12 @@ from urlparse import urljoin
 
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.conf import settings
-from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib.auth import (
+    REDIRECT_FIELD_NAME, 
+    authenticate, 
+    login as django_login, 
+    logout as django_logout
+)
 
 __all__ = ['login', 'logout']
 
@@ -72,10 +77,9 @@ def login(request, next_page=None, required=False):
     ticket = request.GET.get('ticket')
     service = _service_url(request, next_page)
     if ticket:
-        from django.contrib import auth
-        user = auth.authenticate(ticket=ticket, service=service, request=request)
+        user = authenticate(ticket=ticket, service=service, request=request)
         if user is not None:
-            auth.login(request, user)
+            django_login(request, user)
             name = user.first_name or user.username
             return HttpResponseRedirect(next_page)
         elif settings.CAS_RETRY_LOGIN or required:
@@ -90,8 +94,7 @@ def login(request, next_page=None, required=False):
 def logout(request, next_page=None):
     """Redirects to CAS logout page"""
 
-    from django.contrib.auth import logout
-    logout(request)
+    django_logout(request)
     if not next_page:
         next_page = _redirect_url(request)
     if settings.CAS_LOGOUT_COMPLETELY:
