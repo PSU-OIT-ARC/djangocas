@@ -41,20 +41,20 @@ Set the following required setting in `settings.py`:
 
 Optional settings include:
 
-* `CAS_ADMIN_PREFIX`: The URL prefix of the Django administration site.
+* `CAS_ADMIN_PREFIX = None`: The URL prefix of the Django administration site.
   If undefined, the CAS middleware will check the view being rendered to
   see if it lives in `django.contrib.admin.views`.
-* `CAS_EXTRA_LOGIN_PARAMS`: Extra URL parameters to add to the login URL
+* `CAS_EXTRA_LOGIN_PARAMS = None`: Extra URL parameters to add to the login URL
   when redirecting the user.
-* `CAS_IGNORE_REFERER`: If `True`, logging out of the application will
+* `CAS_IGNORE_REFERER = False`: If `True`, logging out of the application will
   always send the user to the URL specified by `CAS_REDIRECT_URL`.
-* `CAS_LOGOUT_COMPLETELY`: If `False`, logging out of the application
+* `CAS_LOGOUT_COMPLETELY = True`: If `False`, logging out of the application
   won't log the user out of CAS as well.
-* `CAS_REDIRECT_URL`: Where to send a user after logging in or out if
+* `CAS_REDIRECT_URL = '/'`: Where to send a user after logging in or out if
   there is no referrer and no next page set. Default is `/`.
-* `CAS_RETRY_LOGIN`: If `True` and an unknown or invalid ticket is
+* `CAS_RETRY_LOGIN = False`: If `True` and an unknown or invalid ticket is
   received, the user is redirected back to the login page.
-* `CAS_VERSION`: The CAS protocol version to use. `'1'` and `'2'` are
+* `CAS_VERSION = '2'`: The CAS protocol version to use. `'1'` and `'2'` are
   supported, with `'2'` being the default.
 
 Make sure your project knows how to log users in and out by adding these to
