@@ -80,7 +80,6 @@ def login(request, next_page=None, required=False):
         user = authenticate(ticket=ticket, service=service, request=request)
         if user is not None:
             django_login(request, user)
-            name = user.first_name or user.username
             return HttpResponseRedirect(next_page)
         elif settings.CAS_RETRY_LOGIN or required:
             return HttpResponseRedirect(_login_url(service))

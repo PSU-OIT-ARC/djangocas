@@ -5,8 +5,7 @@ from urlparse import urljoin
 import urllib2
 
 from django.conf import settings
-
-from djangocas.models import User
+from django.contrib.auth import get_user_model
 
 __all__ = ['CASBackend']
 
@@ -174,6 +173,7 @@ class CASBackend(object):
         return self.get_or_init_user(username)
 
     def get_or_init_user(self, username):
+        User = get_user_model()
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
@@ -185,7 +185,7 @@ class CASBackend(object):
 
     def get_user(self, user_id):
         """Retrieve the user's entry in the User model if it exists"""
-
+        User = get_user_model()
         try:
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
