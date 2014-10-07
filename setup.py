@@ -27,5 +27,10 @@ to the admin interface.
     version='1.0.0',
     install_requires=[
         'six',
-    ]
+    ],
+    classifiers=[
+        'Framework :: Django',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+    ],
 )
