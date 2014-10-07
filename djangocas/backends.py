@@ -1,8 +1,7 @@
 """CAS authentication backend"""
 
-from urllib import urlencode, urlopen
-from urlparse import urljoin
-import urllib2
+from six.moves.urllib.request import urlopen, Request
+from six.moves.urllib.parse import urlencode, urljoin
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -114,17 +113,17 @@ def _verify_cas2_saml(ticket, service):
         'connection': 'keep-alive',
         'content-type': 'text/xml'}
     params = {'TARGET': service}
-    url = urllib2.Request(urljoin(settings.CAS_SERVER_URL, 'samlValidate') + '?' + urlencode(params), '', headers)
+    url = Request(urljoin(settings.CAS_SERVER_URL, 'samlValidate') + '?' + urlencode(params), '', headers)
     data = get_saml_assertion(ticket)
     url.add_data(get_saml_assertion(ticket))
 
-    page = urllib2.urlopen(url)
+    page = urlopen(url)
 
     try:
         user = None
         attributes = {}
         response = page.read()
-        print response
+        print(response)  # XXX: Is this supposed to be here?
         tree = ElementTree.fromstring(response)
         # Find the authentication status
         success = tree.find('.//' + SAML_1_0_PROTOCOL_NS + 'StatusCode')
@@ -132,7 +131,7 @@ def _verify_cas2_saml(ticket, service):
             # User is validated
             attrs = tree.findall('.//' + SAML_1_0_ASSERTION_NS + 'Attribute')
             for at in attrs:
-                if 'uid' in at.attrib.values():
+                if 'uid' in set(at.attrib.values()):
                     user = at.find(SAML_1_0_ASSERTION_NS + 'AttributeValue').text
                     attributes['uid'] = user
                 values = at.findall(SAML_1_0_ASSERTION_NS + 'AttributeValue')

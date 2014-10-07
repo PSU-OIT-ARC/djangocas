@@ -25,4 +25,7 @@ to the admin interface.
     packages=['djangocas'],
     url='https://github.com/mdj2/djangocas',
     version='1.0.0',
+    install_requires=[
+        'six',
+    ]
 )
