@@ -12,7 +12,7 @@ CAS support to the admin interface.
 
 # Installation
 
-    pip install -e git+https://github.com/PSU-OIT-ARC/djangocas.git#egg=djangocas
+    pip install djangocas
 
 Now add it to the middleware and authentication backends in your settings.
 Make sure you also have the authentication middleware installed. Here's what
